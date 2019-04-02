@@ -4,8 +4,9 @@
 ```
 yarn install
 ```
-## Install Axios
+## Install Plugin
 npm install axios
+npm install --save jquery
 
 ### Compiles and hot-reloads for development
 ```
