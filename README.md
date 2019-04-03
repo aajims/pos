@@ -10,6 +10,7 @@ npm install axios
 npm install --save jquery
 ```
 yarn add vue-input-only-number
+
 ### Compiles and hot-reloads for development
 ```
 yarn run serve
