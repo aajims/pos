@@ -66,6 +66,9 @@
     letter-spacing: 1.7px;
     margin-bottom: 30px;
 }
+.btn-cek.disabled {
+    background-color: #9b9b9b;
+}
 .btn-cek {
     font-family: SFProText-Regular;
     width: 100%;
@@ -103,7 +106,7 @@
     letter-spacing: 1px;
 }
 .bodi-home {
-    margin: 15px 199px;
+    margin: 87px 199px;
 }
 .form-controls {
     font-family: SFProText-Bold;
@@ -131,7 +134,7 @@
     width: 210px;
 }
 .nama {
-    width: 57%;
+    width: 53%;
     padding: 17px;
 }
 .sama {
@@ -180,7 +183,7 @@
     position: absolute;
     z-index: 5;
     float: left;
-    margin: 30px 65px;
+    margin: 3% 1% 1% 12%;
 }
 .logoo {
     width: 117px;
@@ -203,13 +206,24 @@
     float: left;
     line-height: 2;
 }
-.btn-cairkan {
+.btn-cairkan{
     font-family: SFProText-Regular;
     width: 100%;
     font-size: 24px;
     padding: 11px 0;
     color: #ffffff;
     background-color: #f76b1c;
+    border-radius: 30px;
+    letter-spacing: 1.7px;
+    margin: 45px 0 0;
+}
+.btn-cairkan.disabled{
+    font-family: SFProText-Regular;
+    width: 100%;
+    font-size: 24px;
+    padding: 11px 0;
+    color: #ffffff;
+    background-color: #9b9b9b;
     border-radius: 30px;
     letter-spacing: 1.7px;
     margin: 45px 0 0;
@@ -241,7 +255,6 @@
     padding: 1px 12px;
     color: #333333;
     text-align: center;
-    border-right: solid 1px #ccc;
 }
 .btn-cetak {
     font-family: SFProText-Regular;
@@ -251,6 +264,9 @@
     color: #333333;
     text-align: center;
 }
+.form-inputs {
+    margin: 7% 21%;
+}
 
 
 @media (min-width: 1400px) {
@@ -259,30 +275,208 @@
         background-color: #f4f4f4;
     }
 }
+@media (min-width: 1024px) and (max-width: 1399px) {
+    .bodi-login {
+        padding: 21% 23% 45%;
+    }
+    .bodi-home {
+        margin: 87px 31px;
+    }
+    .btn-cek {
+        margin: 45px 0 275px
+    }
+    .img-logo {
+        margin: 3% 1% 1% 5%;
+    }
+    .bodi-input {
+        padding: 3% 13% 35%;
+    }
+}
 @media (min-width: 768px) and (max-width: 1023px) {
-    .imgtron {
-        height: 1050px;
-        object-fit: contain;
+    .bodi-login {
+        padding: 21% 23% 45%;
+    }
+    .bodi-home {
+        margin: 87px 31px;
+    }
+    .btn-cek {
+        margin: 45px 0 275px
+    }
+    .img-logo {
+        margin: 3% 1% 1% 5%;
+    }
+    .bodi-input {
+        padding: 3% 13% 35%;
+    }
+    .btn-cairkan {
+        font-size: 21px;
+        margin: 31px 0 0;
     }
 }
 
 @media (min-width: 414px) and (max-width: 767px) {
-    .imgtron {
-        height: 850px;
-        object-fit: contain;
+    .bodi-login {
+        padding: 23% 5% 41%;
+    }
+    .img-login {
+        width: 131px;
+    }
+    .login p {
+        margin: 29px 0;
+    }
+    .bodi-home {
+        margin: 57px 1px;
+    }
+    .input {
+        padding: 7% 4%;
+    }
+    .btn-cek {
+        margin: 45px 0 127px
+    }
+    .img-logo {
+        margin: 9% 1% 1% 3%;
+    }
+    .bodi-input {
+        padding: 3% 3% 5%;
+    }
+    .form-inputs {
+        margin: 11% 11%;
+    }
+    .bodi-received h1 {
+        font-size: 29px;
+        margin: 7px 0 0;
+    }
+    .logoo {
+        width: 85px;
+    }
+    .btn-cairkan {
+        font-size: 21px;
+        margin: 31px 0 0;
+    }
+    .form-controls {
+        font-size: 29px;
     }
 }
 
 @media (min-width: 321px) and (max-width: 413px) {
-    .imgtron {
-        height: 750px;
-        object-fit: contain;
+    .bodi-login {
+        padding: 23% 5% 35%;
     }
+    .img-login {
+        width: 131px;
+    }
+    .login p {
+        margin: 29px 0;
+    }
+    .bodi-home {
+        margin: 47px 1px;
+    }
+    .input {
+        padding: 7% 4%;
+    }
+    .btn-cek {
+        margin: 45px 0 75px
+    }
+    .img-logo {
+        margin: 3% 1% 1% 5%;
+    }
+    .bodi-input {
+        padding: 3% 3% 5%;
+    }
+    .img-logo {
+        margin: 9% 1% 1% 3%;
+    }
+    .bodi-input {
+        padding: 3% 3% 5%;
+    }
+    .form-inputs {
+        margin: 11% 11%;
+    }
+    .bodi-received h1 {
+        font-size: 29px;
+        margin: 7px 0 0;
+    }
+    .logoo {
+        width: 85px;
+    }
+    .btn-cairkan {
+        font-size: 21px;
+        margin: 31px 0 0;
+    }
+    .form-controls {
+        font-size: 29px;
+    }
+    .form-group {
+        margin-bottom: 5px;
+    }
+    .btn-cairkan.disabled {
+        font-size: 19px;
+        margin: 23px 0 0;
+    }
+    
 }
 
 @media (max-width: 320px) {
-    .imgtron {
-        height: 550px;
-        object-fit: contain;
+    .bodi-login {
+        padding: 23% 5% 35%;
+    }
+    .img-login {
+        width: 131px;
+    }
+    .login {
+        padding: 25px 23px;
+    }
+    .login p {
+        margin: 19px 0;
+    }
+    .bodi-home {
+        margin: 47px 1px;
+    }
+    .input {
+        padding: 7% 4%;
+    }
+    .btn-cek {
+        margin: 45px 0 75px
+    }
+    .input p {
+        font-size: 19px;
+    }
+    .form-controls {
+        font-size: 26px;
+        padding: 28px 12px
+    }
+    .img-logo {
+        margin: 9% 1% 1% 2%
+    }
+    .bodi-input {
+        padding: 3% 3% 5%;
+    }
+    .form-inputs {
+        margin: 4% 9%;
+    }
+    .bodi-received h1 {
+        font-size: 25px;
+        margin: 3px 0 13px;
+    }
+    .logoo {
+        width: 78px;
+    }
+    .btn-cairkan {
+        font-size: 21px;
+        margin: 31px 0 0;
+    }
+    .form-controls {
+        font-size: 29px;
+    }
+    .form-group {
+        margin-bottom: 5px;
+    }
+    .btn-cairkan.disabled {
+        font-size: 19px;
+        margin: 23px 0 0;
+    }
+    .form-control {
+        padding: 17px 12px;
+        letter-spacing: 2px;
     }
 }

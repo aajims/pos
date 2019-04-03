@@ -5,7 +5,7 @@
                 <div class="login">
                     <img src="../assets/images/posfin_logo_color.png" class="img-login">
                     <h2>Remitansi</h2>
-                    <div class="alert alert-danger" v-if="errors" v-for="error in errors">
+                    <div class="alert alert-danger" v-for="error in errors">
                         <p>{{ error }}</p>
                     </div>
                     <form role="form" @submit.prevent="login">

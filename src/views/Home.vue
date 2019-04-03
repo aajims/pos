@@ -5,9 +5,8 @@
       <h2>REMITANSI</h2>
       <div class="bodi-home">
          <p>Masukkan 10 digit nomor MTCN</p>
-         <input type="number" class="form-controls" v-model="mtcn" placeholder="1234567890" >
-          <a href="#" data-toggle="modal" data-target="#cekdulu" v-on:click.prevent="tambahkandata" class="btn btn-cek">CEK NOMOR</a>
-        <img src="../assets/images/powered_by_kas_pro.png" class="power">
+         <input type="text" class="form-controls" :maxlength="max" id="mtcn" v-model="mtcn" placeholder="1234567890" v-int>
+          <a href="#" data-toggle="modal" data-target="#cekdulu" v-bind:class="{disabled: isDisabled}" v-on:click.prevent="tambahkandata" class="btn btn-cek">CEK NOMOR</a>
       </div>
     </div>
     <div class="modal fade" id="cekdulu" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -17,7 +16,13 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> 
             <h4 class="modal-title" id="myModalLabel">Cek Nomor MTCN</h4>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" v-if="status == 1">
+            <tr>
+              <td class="nama">Nomor MTCN	</td><td class="sama">:</td><td><b>{{ mtcn }}</b></td>
+            </tr>
+            <p> Dana sudah Pernah di ambil</p>
+          </div>
+          <div class="modal-body" v-else-if="status == 0">
             <tr>
               <td class="nama">Nomor MTCN	</td><td class="sama">:</td><td><b>{{ mtcn }}</b></td>
             </tr>
@@ -37,9 +42,12 @@
               <td class="nama">Nilai Dana	</td><td class="sama">:</td><td><b>Rp {{ amount }}</b></td>
             </tr>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer" v-if="status == 1">
             <button type="button" class="btn btn-close" data-dismiss="modal">Tutup</button>
-            <router-link to="received"><button type="button" class="btn btn-lanjut">Lanjut Pencairan</button></router-link>
+          </div>
+          <div class="modal-footer" v-else-if="status == 0">
+            <button type="button" class="btn btn-close" data-dismiss="modal">Tutup</button>
+            <button type="submit" class="btn btn-lanjut" data-dismiss="modal" v-on:click="lanjut">Lanjut Pencairan</button>
           </div>
         </div>
       </div>
@@ -54,22 +62,32 @@ export default {
   name: 'home',
   data() {
     return {
-      mtcn: null,
-      insertDate: null,
-      senderName: null,
-      receiverName: null,
-      receiverPhone: null,
-      amount: null,
+      mtcn: '',
+      status: '',
+      insertDate: '',
+      senderName: '',
+      receiverName: '',
+      receiverPhone: '',
+      amount: '',
+      max: 10,
       errors: null,
       show: true
     }
   },
-
-    
+  computed: {
+    isDisabled() {
+    if (this.mtcn.length > 9 ){
+    return false
+    }else{
+      return true
+    }
+    }
+  },
   methods: {
     tambahkandata() {
       let app = this
       let id = app.mtcn
+      localStorage.setItem('mtcn', id) 
       axios({
         method: 'get',
         url: 'http://149.129.222.104:8080/inquiryMtcn/' + id,
@@ -83,12 +101,14 @@ export default {
           app.receiverName = response.data.receiverName
           app.receiverPhone = response.data.receiverPhone
           app.amount = response.data.amount
+          app.status = response.data.status
           console.log(response)
       })
+    },
+    lanjut() {
+      this.$router.push('/received')
     }
-
   },
-
 }
 </script>
 
