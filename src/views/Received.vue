@@ -47,7 +47,7 @@
               </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-tutup" data-dismiss="modal">OK</button>
+            <button type="button" class="btn btn-tutup" v-on:click="back" data-dismiss="modal">OK</button>
             <!-- <router-link to="print"><button type="button" class="btn btn-cetak">CETAK STRUK</button></router-link> -->
           </div>
         </div>
@@ -84,19 +84,22 @@ import axios from 'axios'
     }
   },
     methods: {
+        back() {
+        this.$router.push('/home')
+        },
         ambildana() {
-      let app = this
-      let id = localStorage.getItem('mtcn')
-      axios({
-        method: 'post',
-        url: 'http://149.129.222.104:8080/receiveMoney/' + id,
-        // "Access-Control-Allow-Origin": '*',
-         crossdomain: true, 
-          "Content-Type": 'application/json'
-        }).then(function (response) {
-            app.status = response.data.status
-        })
-        }
-    },
+        let app = this
+        let id = localStorage.getItem('mtcn')
+        axios({
+            method: 'post',
+            url: 'http://149.129.222.104:8080/receiveMoney/' + id,
+            // "Access-Control-Allow-Origin": '*',
+            crossdomain: true, 
+            "Content-Type": 'application/json'
+            }).then(function (response) {
+                app.status = response.data.status
+            })
+            }
+        },
     }
 </script>

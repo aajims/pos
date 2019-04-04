@@ -6,7 +6,7 @@
       <div class="bodi-home">
          <p>Masukkan 10 digit nomor MTCN</p>
          <input type="text" class="form-controls" :maxlength="max" id="mtcn" v-model="mtcn" placeholder="1234567890" v-int>
-          <a href="#" data-toggle="modal" data-target="#cekdulu" v-bind:class="{disabled: isDisabled}" v-on:click.prevent="tambahkandata" class="btn btn-cek">CEK NOMOR</a>
+          <button data-target="#cekdulu" data-toggle="modal" v-bind:class="{disabled: isDisabled}" v-on:click.prevent="tambahkandata" class="btn btn-cek">CEK NOMOR</button>
       </div>
     </div>
     <div class="modal fade" id="cekdulu" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -16,7 +16,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> 
             <h4 class="modal-title" id="myModalLabel">Cek Nomor MTCN</h4>
           </div>
-          <div class="modal-body" v-if="status == 1">
+          <div class="modal-body" v-if="status == 1"> 
             <tr>
               <td class="nama">Nomor MTCN	</td><td class="sama">:</td><td><b>{{ mtcn }}</b></td>
             </tr>
@@ -109,6 +109,9 @@ export default {
       this.$router.push('/received')
     }
   },
+  created(){
+    localStorage.removeItem('mtcn')
+  }
 }
 </script>
 
