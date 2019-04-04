@@ -14,7 +14,7 @@
                         </div>
                         <div class="form-group">
                             <label>Nomor Kartu Identitas</label>
-                            <input type="text" id="nomor" :maxlength="maxktp" v-model="nomor" class="form-control">
+                            <input type="text" id="nomor" v-model="nomor" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Nomor Telepon</label>
@@ -70,14 +70,13 @@ import axios from 'axios'
         message: '',
         status: '',
         max: 12,
-        maxktp: 16,
         errors: null,
         show: true
         }
     },
     computed: {
     isDisabled() {
-        if (this.nama.length > 3 && this.nomor.length > 16  && this.telepon.length > 9 && this.alamat.length > 9 ){
+        if (this.nama.length > 3 && this.nomor.length > 11  && this.telepon.length > 9 && this.alamat.length > 9 ){
         return false
         }else{
         return true
