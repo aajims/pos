@@ -94,8 +94,7 @@ import axios from 'axios'
          crossdomain: true, 
           "Content-Type": 'application/json'
         }).then(function (response) {
-            app.status = response.data.status,
-            app.$router.push({ name: 'home'})
+            app.status = response.data.status
         })
         }
     },
