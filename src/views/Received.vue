@@ -35,16 +35,16 @@
       <div class="modal-dialog in">
         <div class="modal-content">
           <div class="modal-body">
-              <div class="bodi-sukses" v-if="status == 0">
+              <div class="bodi-sukses">
                  <img src="../assets/images/icon.png" class="img-icon">
                 <h2>Pencairan Dana Berhasil!</h2>
                 <p>Proses pencairan dana telah berhasil dilakukan, MTCN telah di non-aktifkan. Silakan memberikan dana kepada penerima</p>
               </div>
-              <div class="bodi-sukses" v-else-if="status == 1">
+              <!-- <div class="bodi-sukses" v-else-if="status == 1">
                   <img src="../assets/images/remove-icon.png" class="img-icon">
                   <h2>Pencairan Dana Gagal!</h2>
                   <p>Dana telah di ambil oleh Penerima, MTCN telah di non-aktifkan. </p>
-              </div>
+              </div> -->
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-tutup" v-on:click="back" data-dismiss="modal">OK</button>
