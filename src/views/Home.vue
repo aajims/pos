@@ -1,3 +1,4 @@
+
 <template>
   <div class="home">
     <div class="input">
@@ -16,13 +17,19 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> 
             <h4 class="modal-title" id="myModalLabel">Cek Nomor MTCN</h4>
           </div>
-          <div class="modal-body" v-if="status == 1"> 
+          <div class="modal-body" v-if="errorCode == 202"> 
             <tr>
               <td class="nama">Nomor MTCN	</td><td class="sama">:</td><td><b>{{ mtcn }}</b></td>
             </tr>
-            <p> Dana sudah Pernah di ambil</p>
+            <p> Maaf, Dana ini sudah Pernah di Ambil</p>
           </div>
-          <div class="modal-body" v-else-if="status == 0">
+          <div class="modal-body" v-if="errorCode == 203"> 
+            <tr>
+              <td class="nama">Nomor MTCN	</td><td class="sama">:</td><td><b>{{ mtcn }}</b></td>
+            </tr>
+            <p> Data MTCN tidak di temukan di Database kami</p>
+          </div>
+          <div class="modal-body" v-else-if="errorCode == 0">
             <tr>
               <td class="nama">Nomor MTCN	</td><td class="sama">:</td><td><b>{{ mtcn }}</b></td>
             </tr>
@@ -42,10 +49,13 @@
               <td class="nama">Nilai Dana	</td><td class="sama">:</td><td><b>Rp {{ amount }}</b></td>
             </tr>
           </div>
-          <div class="modal-footer" v-if="status == 1">
+          <div class="modal-footer" v-if="errorCode == 202">
             <button type="button" class="btn btn-close" data-dismiss="modal">Tutup</button>
           </div>
-          <div class="modal-footer" v-else-if="status == 0">
+          <div class="modal-footer" v-if="errorCode == 203">
+            <button type="button" class="btn btn-close" data-dismiss="modal">Tutup</button>
+          </div>
+          <div class="modal-footer" v-else-if="errorCode == 0">
             <button type="button" class="btn btn-close" data-dismiss="modal">Tutup</button>
             <button type="submit" class="btn btn-lanjut" data-dismiss="modal" v-on:click="lanjut">Lanjut Pencairan</button>
           </div>
@@ -69,6 +79,7 @@ export default {
       receiverName: '',
       receiverPhone: '',
       amount: '',
+      errorCode: '',
       max: 10,
       errors: null,
       show: true
@@ -95,13 +106,18 @@ export default {
          crossdomain: true, 
           "Content-Type": 'application/json'
         }).then(function (response) {
-          app.mtcn = response.data.mtcn 
-          app.insertDate = response.data.insertDate
-          app.senderName = response.data.senderName
-          app.receiverName = response.data.receiverName
-          app.receiverPhone = response.data.receiverPhone
-          app.amount = response.data.amount
-          app.status = response.data.status
+          if (response.data.mtcn != null) {
+            app.mtcn = response.data.mtcn 
+            app.insertDate = response.data.insertDate
+            app.senderName = response.data.senderName
+            app.receiverName = response.data.receiverName
+            app.receiverPhone = response.data.receiverPhone
+            app.amount = response.data.amount
+            app.status = response.data.status
+            app.errorCode = 0
+          } else {
+            app.errorCode = response.data.errorCode
+          }
           console.log(response)
       })
     },
