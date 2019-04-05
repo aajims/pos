@@ -35,12 +35,7 @@
       <div class="modal-dialog in">
         <div class="modal-content">
           <div class="modal-body">
-              <div class="bodi-sukses" v-if="status == 1">
-                  <img src="../assets/images/remove-icon.png" class="img-icon">
-                  <h2>Pencairan Dana Gagal!</h2>
-                  <p>Dana telah di ambil oleh Penerima, MTCN telah di non-aktifkan. </p>
-              </div>
-              <div class="bodi-sukses" v-else>
+              <div class="bodi-sukses">
                  <img src="../assets/images/icon.png" class="img-icon">
                 <h2>Pencairan Dana Berhasil!</h2>
                 <p>Proses pencairan dana telah berhasil dilakukan, MTCN telah di non-aktifkan. Silakan memberikan dana kepada penerima</p>
